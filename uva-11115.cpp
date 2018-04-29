@@ -48,19 +48,11 @@ string multiply ( string s,int p ) {///to multiply number as string with number 
 }
 
 
-
 void precalc ( ) {/// calculating all values n^d
 
     for ( int i = 1; i <= 10; i++ ) {
         values[i].push_back("1");
-        if ( i == 10 )
-            values[i].push_back("10");
-        else {
-            string init = "";
-            init += char ( i + '0' );
-            values[i].push_back(init);
-        }
-        for ( int j = 2; j <= 25; j++ ) {
+        for ( int j = 1; j <= 25; j++ ) {
             string s = values[i][j-1];
             string res = multiply(s,i);///multiply called
             values[i].push_back(res);
