@@ -31,10 +31,10 @@ double findx ( double low,double high ) {
     double mid,ans;
     mid = (low + high)/2.00;
     ans = findval(mid);
-    if ( fabs(ans) < eps )
+    if ( fabs(ans) < eps )/// negative numbers discarded
         return mid;
     else {
-        if ( findval(low)*findval(mid) > 0 )
+        if ( findval(low)*findval(mid) > 0 )///not in low-mid so in mid-high
             return findx(mid,high);
         else
             return findx(low,mid);
@@ -47,7 +47,7 @@ int main ( ) {
     ios_base::sync_with_stdio(false);
     precision(4);
     while ( cin >> p >> q >> r >> s >> t >> u ) {
-        if ( findval(0)*findval(1) > 0 )
+        if ( findval(0)*findval(1) > 0 )/// one of them has to be negative
             cout << "No solution\n";
         else
             cout << findx(0.00,1.00) << endl;
