@@ -35,8 +35,6 @@ ull calculate ( int n, int k ) {
 
 
 int main () {
-    freopen("input.txt","r",stdin);
-    freopen("output.txt","w",stdout);
     int t;
     sf(t);
     for ( int q = 1; q <= t; q++ ) {
