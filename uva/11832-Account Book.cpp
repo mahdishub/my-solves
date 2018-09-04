@@ -60,7 +60,6 @@ void calculate (  ) {
 
 string convert ( int n, int sz ) {
     string s,s1="";
-    if ( n < 0 || sz < 0 ) return s1;
     while ( n ) {
         ( n & 1 ) ? s.push_back('1') : s.push_back('0');
         n = n >> 1;
@@ -72,8 +71,8 @@ string convert ( int n, int sz ) {
 }
 
 int main ( ) {
-    freopen("input.txt","r",stdin);
-    freopen("output.txt","w",stdout);
+    ///freopen("input.txt","r",stdin);
+    ///freopen("output.txt","w",stdout);
     ios_base::sync_with_stdio(false);
     gen();
     int n,f;
