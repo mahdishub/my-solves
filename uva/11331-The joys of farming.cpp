@@ -84,7 +84,7 @@ int main ( ) {
             pointlist.push_back(bfs(i));
             if ( !bicolor ) break;
         }
-        if ( !bicolor || (sum - b) != c ) { printf("no\n"); continue;}
+        if ( !bicolor || (sum - b) != c ) printf("no\n");
         else ( coloring(0,b) ) ? printf("yes\n") : printf("no\n");
     }
 }
