@@ -55,32 +55,31 @@ int tree[MAX];
 bool lazy[MAX];
 int Left,Right,c;
 
-void marklazy ( int n ) {/// marking the children lazy
+void marklazy ( int n ) {
     n = n << 1;
-    lazy[n] = lazy[n+1] = true;
+    lazy[n] = !lazy[n];
+    lazy[n+1] = !lazy[n+1];
 }
 
 void update_tree ( int idx,int l,int r ) {
     int nc = r-l+1,mid = int((l+r)>>1);
-    ///cout << l << ' ' << r << endl;
-    if ( lazy[idx] ) { /// if node needs to be updated
+    if ( lazy[idx] ) {
         tree[idx] = nc - tree[idx];
-        if ( l != r ) marklazy(idx); /// if not leaf node
+        if ( l != r ) marklazy(idx);
         lazy[idx] = false;
     }
-    if ( l >= Left && r <= Right ) { ///fully in segment
+    if ( l >= Left && r <= Right ) {
         tree[idx] = nc - tree[idx];
         if ( l != r ) marklazy(idx);
         return;
     }
-    if ( l == r | l > Right | r < Left ) return; /// out of segment or leaf
+    if ( l == r | l > Right | r < Left ) return;
     update_tree(idx<<1,l,mid);
     update_tree((idx<<1)+1,mid+1,r);
     tree[idx] = tree[idx<<1] + tree[(idx<<1)+1];
 }
 
 int query ( int idx, int l, int r ) {
-    ///cout << l << ' ' << r << endl;
     int nc = r-l+1,mid = int((l+r)>>1);
     int ans;
     if ( lazy[idx] ) {
