@@ -117,7 +117,6 @@ int main () {
     fr (i,n) {
         temp = ( i == 0 ) ? init : roots[i-1];
         roots[i] = temp->update(0,n-1,M[trr[i]]);
-        ///inorder(roots[i],0,n-1);
     }
     int L,R;
 
