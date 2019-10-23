@@ -1,1 +1,47 @@
+************************************************************************************************
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+vector<int> graph[105];
+bool mrk[105];
 
+
+void dfs ( int  src ) {
+    for ( int i = 0; i < graph[src].size(); i++ ) {
+        if ( mrk[graph[src][i]] == 0 ) {
+            mrk[graph[src][i]] = 1;
+            dfs(graph[src][i]);
+        }
+    }
+}
+
+
+int main () {
+    ///freopen("input.txt","r",stdin);
+    ///freopen("output.txt","w",stdout);
+    ios_base::sync_with_stdio(false);
+    ///cin.tie(0);
+    int n,m;
+    while ( cin >> n, n ) {
+        fr(i,105) graph[i].clear();
+        int u,v;
+        while ( cin >> u, u ) {
+            while ( cin >> v, v ) graph[u].push_back(v);
+        }
+        int q,src;
+        cin >> q;
+        while ( q-- ) {
+            memset(mrk,false,sizeof(mrk));
+            cin >> src;
+            dfs(src);
+            bool flag = 0;
+            vector<int>ans;
+            for ( int i = 1; i <= n; i++ ) {
+                if ( mrk[i] == 0 ) ans.push_back(i);
+            }
+            cout << ans.size();
+            fr(i,ans.size()) cout << ' ' << ans[i];
+            cout << endl;
+        }
+    }
+    return 0;
+}
+**************************************************************************************************
